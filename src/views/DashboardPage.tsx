@@ -43,7 +43,7 @@ export class DashboardPage extends React.Component<DashboardPageProps, Dashboard
           <div className="flex items-center justify-between px-4 py-3 max-w-lg mx-auto">
             <h1 className="text-white font-bold text-lg">Mi Perfil</h1>
             <button
-              onClick={() => this.handleLogout()}
+              onClick={this.handleLogout}
               className="text-slate-400 active:text-red-400 transition-colors text-sm font-medium"
             >
               Salir
