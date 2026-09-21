@@ -5,6 +5,7 @@ import { UserController } from '../controllers/UserController';
 
 interface DashboardPageProps {
   onLogout: () => void;
+  onBack?: () => void;
 }
 
 interface DashboardPageState {
@@ -41,7 +42,20 @@ export class DashboardPage extends React.Component<DashboardPageProps, Dashboard
       <div className="min-h-dvh bg-gradient-to-br from-slate-900 to-slate-800">
         <header className="sticky top-0 z-10 bg-white/10 backdrop-blur-lg border-b border-white/10">
           <div className="flex items-center justify-between px-4 py-3 max-w-lg mx-auto">
-            <h1 className="text-white font-bold text-lg">Mi Perfil</h1>
+            <div className="flex items-center gap-2">
+              {this.props.onBack && (
+                <button
+                  onClick={this.props.onBack}
+                  aria-label="Volver al catalogo"
+                  className="text-slate-400 active:text-blue-400 transition-colors"
+                >
+                  <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                  </svg>
+                </button>
+              )}
+              <h1 className="text-white font-bold text-lg">Mi Perfil</h1>
+            </div>
             <button
               onClick={this.handleLogout}
               className="text-slate-400 active:text-red-400 transition-colors text-sm font-medium"
