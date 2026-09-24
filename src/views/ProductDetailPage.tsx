@@ -83,7 +83,7 @@ export class ProductDetailPage extends React.Component<ProductDetailPageProps, P
     }
 
     const numericPrice = Number(price);
-    if (Number.isNaN(numericPrice) || numericPrice < 0) {
+    if (!Number.isFinite(numericPrice) || numericPrice < 0) {
       this.setState({ editError: 'El precio debe ser un numero valido.' });
       return;
     }
@@ -97,7 +97,7 @@ export class ProductDetailPage extends React.Component<ProductDetailPageProps, P
         description,
         category: category.trim(),
         image,
-      });
+      }, this.state.product?.rating);
       this.setState({ product: updated, editing: false, saving: false });
       window.alert('Producto actualizado');
     } catch {

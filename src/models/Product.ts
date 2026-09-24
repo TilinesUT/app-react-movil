@@ -5,7 +5,7 @@ export interface ProductDTO {
   description: string;
   category: string;
   image: string;
-  rating: {
+  rating?: {
     rate: number;
     count: number;
   };
@@ -27,7 +27,7 @@ export class Product {
     this._description = dto.description;
     this._category = dto.category;
     this._image = dto.image;
-    this._rating = dto.rating;
+    this._rating = dto.rating ?? { rate: 0, count: 0 };
   }
 
   get id(): number {

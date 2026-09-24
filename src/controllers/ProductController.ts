@@ -47,8 +47,12 @@ export class ProductController {
     return this.api.deleteProduct(id);
   }
 
-  async update(id: number, values: ProductUpdatePayload): Promise<Product> {
+  async update(
+    id: number,
+    values: ProductUpdatePayload,
+    previousRating?: Product['rating'],
+  ): Promise<Product> {
     const dto = await this.api.updateProduct(id, values);
-    return new Product(dto);
+    return new Product({ ...dto, rating: dto.rating ?? previousRating });
   }
 }
